@@ -1,6 +1,7 @@
 package com.aifitness.fitnessapp.user.model;
 
 import com.aifitness.fitnessapp.training.trainingplan.model.TrainingPlan;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,6 +32,7 @@ public class AppUser implements UserDetails {
     @Column(nullable = false)
     private String lastname;
 
+    @JsonIgnore
     @Column(nullable = false)
     private String password;
 
@@ -55,6 +57,7 @@ public class AppUser implements UserDetails {
 
     private boolean enabled;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<TrainingPlan> trainingPlan;
 
