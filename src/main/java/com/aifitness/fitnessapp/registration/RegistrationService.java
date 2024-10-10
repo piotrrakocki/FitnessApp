@@ -1,13 +1,16 @@
 package com.aifitness.fitnessapp.registration;
 
 import com.aifitness.fitnessapp.email.EmailSender;
+import com.aifitness.fitnessapp.exceptions.TokenAlreadyConfirmedException;
+import com.aifitness.fitnessapp.exceptions.TokenExpiredException;
+import com.aifitness.fitnessapp.exceptions.TokenNotFoundException;
 import com.aifitness.fitnessapp.registration.token.ConfirmationToken;
 import com.aifitness.fitnessapp.registration.token.ConfirmationTokenService;
 import com.aifitness.fitnessapp.user.model.AppUser;
 import com.aifitness.fitnessapp.user.model.UserRole;
 import com.aifitness.fitnessapp.user.service.UserService;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -52,19 +55,20 @@ public class RegistrationService {
         return token;
     }
 
+    @Transactional
     public String confirmToken(String token) {
         ConfirmationToken confirmationToken = confirmationTokenService
                 .getToken(token)
-                .orElseThrow(() -> new IllegalStateException("email already taken"));
+                .orElseThrow(() -> new TokenNotFoundException("token not found"));
 
         if (confirmationToken.getConfirmedAt() != null) {
-            throw new IllegalStateException("email already confirmed");
+            throw new TokenAlreadyConfirmedException("email already confirmed");
         }
 
         LocalDateTime expiredAt = confirmationToken.getExpiredAt();
 
         if (expiredAt.isBefore(LocalDateTime.now())) {
-            throw new IllegalStateException("token expired");
+            throw new TokenExpiredException("token expired");
         }
 
         confirmationTokenService.setConfirmedAt(token);
