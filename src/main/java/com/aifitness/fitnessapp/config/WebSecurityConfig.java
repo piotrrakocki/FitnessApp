@@ -26,6 +26,7 @@ public class WebSecurityConfig {
                 .csrf((csrf -> csrf.disable()))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/api/v1/auth/**", "/api/v1/registration/**").permitAll()
+                        .requestMatchers("/api/v1/training-plans/**").hasAnyAuthority("USER_ROLE")
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
