@@ -9,12 +9,10 @@ import com.aifitness.fitnessapp.user.model.AppUser;
 import com.aifitness.fitnessapp.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 
-import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
-@Log
 @Service
 @RequiredArgsConstructor
 public class TrainingPlanServiceImpl implements TrainingPlanService {
@@ -42,6 +40,5 @@ public class TrainingPlanServiceImpl implements TrainingPlanService {
                 saveTrainingPlan.getName(),
                 saveTrainingPlan.getCreatedAt()
         );
-
     }
 }
