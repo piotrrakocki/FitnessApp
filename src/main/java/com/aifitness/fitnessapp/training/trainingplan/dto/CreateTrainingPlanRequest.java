@@ -1,4 +1,4 @@
-package com.aifitness.fitnessapp.training.trainingplan.controller;
+package com.aifitness.fitnessapp.training.trainingplan.dto;
 
 public record CreateTrainingPlanRequest(
         Long userId,
