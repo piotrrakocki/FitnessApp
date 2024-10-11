@@ -3,12 +3,16 @@ package com.aifitness.fitnessapp.training.trainingPlanVersion.model;
 import com.aifitness.fitnessapp.training.trainingplan.model.TrainingPlan;
 import com.aifitness.fitnessapp.training.workout.model.Workout;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Setter
+@Getter
 public class TrainingPlanVersion {
 
     @Id
