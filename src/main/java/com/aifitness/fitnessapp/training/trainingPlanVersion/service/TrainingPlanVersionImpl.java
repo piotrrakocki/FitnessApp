@@ -18,7 +18,7 @@ public class TrainingPlanVersionImpl implements TrainingPlanVersionService {
     @Override
     public TrainingPlanVersion createTrainingPlanVersion(Long trainingPlanId) {
         TrainingPlan trainingPlan = trainingPlanRepository.findById(trainingPlanId)
-                .orElseThrow(() -> new TrainingPlanNotFoundException("Training plan with this Id does not exist."));
+                .orElseThrow(() -> new TrainingPlanNotFoundException("Training plan with id: " + trainingPlanId + " does not exist."));
 
         TrainingPlanVersion newVersion = new TrainingPlanVersion();
         newVersion.setTrainingPlan(trainingPlan);
