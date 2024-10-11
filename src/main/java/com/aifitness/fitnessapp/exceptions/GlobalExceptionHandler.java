@@ -85,4 +85,14 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(exceptionResponse, notFound);
     }
 
+    @ExceptionHandler(value = {WorkoutNotFoundException.class})
+    public ResponseEntity<Object> handleWorkoutNotFoundException(WorkoutNotFoundException e) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+                e.getMessage(),
+                notFound,
+                ZonedDateTime.now(ZoneId.of("Z"))
+        );
+        return new ResponseEntity<>(exceptionResponse, notFound);
+    }
+
 }
