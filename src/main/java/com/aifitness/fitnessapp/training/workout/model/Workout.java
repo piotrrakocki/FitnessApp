@@ -3,10 +3,14 @@ package com.aifitness.fitnessapp.training.workout.model;
 import com.aifitness.fitnessapp.training.exercise.model.Exercise;
 import com.aifitness.fitnessapp.training.trainingPlanVersion.model.TrainingPlanVersion;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
+@Setter
+@Getter
 public class Workout {
 
     @Id
