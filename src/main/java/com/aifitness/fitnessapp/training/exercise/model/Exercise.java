@@ -3,10 +3,14 @@ package com.aifitness.fitnessapp.training.exercise.model;
 import com.aifitness.fitnessapp.training.progress.model.Progress;
 import com.aifitness.fitnessapp.training.workout.model.Workout;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
+@Setter
+@Getter
 public class Exercise {
 
     @Id
@@ -20,10 +24,10 @@ public class Exercise {
     private int sets;
 
     @Column(nullable = false)
-    private int reps;
+    private int minReps;
 
     @Column(nullable = false)
-    private double weight;
+    private int maxReps;
 
     @ManyToOne
     @JoinColumn(name = "workout_id", nullable = false)
