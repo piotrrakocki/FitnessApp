@@ -1,9 +1,10 @@
 package com.aifitness.fitnessapp.training.trainingplan.service;
 
-import com.aifitness.fitnessapp.training.trainingplan.model.TrainingPlan;
+
+import com.aifitness.fitnessapp.training.trainingplan.dto.TrainingPlanResponse;
 
 public interface TrainingPlanService {
 
-    TrainingPlan createTrainingPlan(Long userId, String planName);
+    TrainingPlanResponse createTrainingPlan(Long userId, String planName);
 
 }
