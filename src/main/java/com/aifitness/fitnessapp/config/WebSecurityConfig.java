@@ -31,7 +31,8 @@ public class WebSecurityConfig {
                                 "/api/v1/registration/**").permitAll()
                         .requestMatchers(
                                 "/api/v1/training-plans/**",
-                                "/api/v1/workouts/**").hasAnyAuthority("USER_ROLE")
+                                "/api/v1/workouts/**",
+                                "/api/v1/exercises/**").hasAnyAuthority("USER_ROLE")
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
