@@ -6,7 +6,7 @@ import com.aifitness.fitnessapp.training.exercise.dto.ExerciseResponse;
 import com.aifitness.fitnessapp.training.exercise.model.Exercise;
 import com.aifitness.fitnessapp.training.exercise.repository.ExerciseRepository;
 import com.aifitness.fitnessapp.training.workout.model.Workout;
-import com.aifitness.fitnessapp.training.workout.model.WorkoutRepository;
+import com.aifitness.fitnessapp.training.workout.repository.WorkoutRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
