@@ -1,11 +1,12 @@
 package com.aifitness.fitnessapp.training.exercise.model;
 
-import com.aifitness.fitnessapp.training.progress.model.Progress;
+import com.aifitness.fitnessapp.training.trainingSession.model.ExerciseSession;
 import com.aifitness.fitnessapp.training.workout.model.Workout;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,6 +35,5 @@ public class Exercise {
     private Workout workout;
 
     @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Progress> progress;
-
+    private List<ExerciseSession> exerciseSessions = new ArrayList<>();
 }
