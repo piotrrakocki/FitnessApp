@@ -1,5 +1,6 @@
 package com.aifitness.fitnessapp.training.trainingplan.service;
 
+import com.aifitness.fitnessapp.exceptions.TrainingPlanNotFoundException;
 import com.aifitness.fitnessapp.exceptions.UserNotFoundException;
 import com.aifitness.fitnessapp.training.trainingPlanVersion.service.TrainingPlanVersionService;
 import com.aifitness.fitnessapp.training.trainingplan.dto.TrainingPlanResponse;
@@ -12,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -40,5 +43,21 @@ public class TrainingPlanServiceImpl implements TrainingPlanService {
                 saveTrainingPlan.getName(),
                 saveTrainingPlan.getCreatedAt()
         );
+    }
+
+    @Override
+    public List<TrainingPlanResponse> getTrainingPlansByUserId(Long userId) {
+        List<TrainingPlan> trainingPlans  = trainingPlanRepository.findByUserId(userId);
+        if (trainingPlans.isEmpty()) {
+            throw new TrainingPlanNotFoundException("Training Plans with userId " + userId + " not found");
+        }
+
+        return trainingPlans.stream().map(plan ->
+                new TrainingPlanResponse(
+                        plan.getId(),
+                        plan.getName(),
+                        plan.getCreatedAt()
+                ))
+                .collect(Collectors.toList());
     }
 }
