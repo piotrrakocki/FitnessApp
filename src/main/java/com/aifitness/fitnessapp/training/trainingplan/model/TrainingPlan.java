@@ -32,7 +32,6 @@ public class TrainingPlan {
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-
     @OneToMany(mappedBy = "trainingPlan", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<TrainingPlanVersion> versions;
 }
