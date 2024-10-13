@@ -1,4 +1,4 @@
-package com.aifitness.fitnessapp.training.trainingSession.model;
+package com.aifitness.fitnessapp.training.trainingSession.exerciseSession.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

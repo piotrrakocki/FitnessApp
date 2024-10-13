@@ -95,4 +95,24 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(exceptionResponse, notFound);
     }
 
+    @ExceptionHandler(value = {TrainingSessionNotFoundException.class})
+    public ResponseEntity<Object> handleTrainingSessionNotFoundException(TrainingSessionNotFoundException e) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+                e.getMessage(),
+                notFound,
+                ZonedDateTime.now(ZoneId.of("Z"))
+        );
+        return new ResponseEntity<>(exceptionResponse, notFound);
+    }
+
+    @ExceptionHandler(value = {ExerciseNotFoundException.class})
+    public ResponseEntity<Object> handleExerciseNotFoundException(ExerciseNotFoundException e) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+                e.getMessage(),
+                notFound,
+                ZonedDateTime.now(ZoneId.of("Z"))
+        );
+        return new ResponseEntity<>(exceptionResponse, notFound);
+    }
+
 }
