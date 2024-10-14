@@ -1,6 +1,7 @@
 package com.aifitness.fitnessapp.training.trainingSession.exerciseSession.model;
 
 import com.aifitness.fitnessapp.training.exercise.model.Exercise;
+import com.aifitness.fitnessapp.training.trainingSession.exerciseSession.exerciseSet.model.ExerciseSet;
 import com.aifitness.fitnessapp.training.trainingSession.model.TrainingSession;
 import jakarta.persistence.*;
 import lombok.Getter;

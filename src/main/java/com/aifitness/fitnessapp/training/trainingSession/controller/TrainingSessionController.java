@@ -20,8 +20,11 @@ public class TrainingSessionController {
 
     @PostMapping("/start/{workoutId}")
     public ResponseEntity<TrainingSessionResponse> startTrainingSession(@AuthenticationPrincipal AppUser appUser, @PathVariable Long workoutId) {
-        Long userId = appUser.getId();
+        return ResponseEntity.ok(trainingSessionService.startTrainingSession(appUser, workoutId));
+    }
 
-        return ResponseEntity.ok(trainingSessionService.startTrainingSession(userId, workoutId));
+    @PostMapping("/end/{workoutId}")
+    public ResponseEntity<TrainingSessionResponse> endTrainingSession(@PathVariable Long workoutId) {
+        return ResponseEntity.ok(trainingSessionService.endTrainingSession(workoutId));
     }
 }
