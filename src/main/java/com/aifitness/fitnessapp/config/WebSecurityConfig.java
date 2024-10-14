@@ -34,7 +34,8 @@ public class WebSecurityConfig {
                                 "/api/v1/workouts/**",
                                 "/api/v1/exercises/**",
                                 "/api/v1/training-sessions/**",
-                                "/api/v1/exercise-sessions/**").hasAnyAuthority("USER_ROLE")
+                                "/api/v1/exercise-sessions/**",
+                                "/api/v1/exercise-set/**").hasAnyAuthority("USER_ROLE")
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")

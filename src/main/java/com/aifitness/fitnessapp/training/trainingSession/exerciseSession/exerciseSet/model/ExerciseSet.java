@@ -2,12 +2,14 @@ package com.aifitness.fitnessapp.training.trainingSession.exerciseSession.exerci
 
 import com.aifitness.fitnessapp.training.trainingSession.exerciseSession.model.ExerciseSession;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 public class ExerciseSet {
 
     @Id
@@ -26,4 +28,11 @@ public class ExerciseSet {
 
     @Column(length = 500)
     private String notes;
+
+    public ExerciseSet(ExerciseSession exerciseSession, double weightUsed, int repsCompleted, String notes) {
+        this.exerciseSession = exerciseSession;
+        this.weightUsed = weightUsed;
+        this.repsCompleted = repsCompleted;
+        this.notes = notes;
+    }
 }
