@@ -60,4 +60,16 @@ public class TrainingPlanServiceImpl implements TrainingPlanService {
                 ))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public TrainingPlanResponse getNewestTrainingPlan(AppUser appUser, Long trainingPlanId) {
+        TrainingPlan trainingPlan = trainingPlanRepository.findTrainingPlanWithLatestVersion(appUser.getId(), trainingPlanId)
+                .orElseThrow(() -> new TrainingPlanNotFoundException("Training Plans with userId " + appUser.getId() + " not found"));
+
+        return new TrainingPlanResponse(
+                trainingPlan.getId(),
+                trainingPlan.getName(),
+                trainingPlan.getCreatedAt()
+        );
+    }
 }
