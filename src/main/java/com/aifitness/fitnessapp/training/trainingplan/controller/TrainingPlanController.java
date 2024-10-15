@@ -23,9 +23,9 @@ public class TrainingPlanController {
             return ResponseEntity.ok(trainingPlanService.createTrainingPlan(request.userId(), request.planName()));
     }
 
-    @GetMapping("/get/{userId}")
-    public ResponseEntity<List<TrainingPlanResponse>> getTrainingPlans(@PathVariable Long userId) {
-        return ResponseEntity.ok(trainingPlanService.getTrainingPlansByUserId(userId));
+    @GetMapping("/get")
+    public ResponseEntity<List<TrainingPlanResponse>> getTrainingPlans(@AuthenticationPrincipal AppUser appUser) {
+        return ResponseEntity.ok(trainingPlanService.getTrainingPlans(appUser));
     }
 
     @GetMapping("/get-newest/{trainingPlanId}")

@@ -10,7 +10,7 @@ public interface TrainingPlanService {
 
     TrainingPlanResponse createTrainingPlan(Long userId, String planName);
 
-    List<TrainingPlanResponse> getTrainingPlansByUserId(Long userId);
+    List<TrainingPlanResponse> getTrainingPlans(AppUser appUser);
 
     TrainingPlanResponse getNewestTrainingPlan(AppUser appUser, Long trainingPlanId);
 

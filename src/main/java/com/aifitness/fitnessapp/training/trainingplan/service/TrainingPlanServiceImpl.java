@@ -46,10 +46,10 @@ public class TrainingPlanServiceImpl implements TrainingPlanService {
     }
 
     @Override
-    public List<TrainingPlanResponse> getTrainingPlansByUserId(Long userId) {
-        List<TrainingPlan> trainingPlans  = trainingPlanRepository.findByUserId(userId);
+    public List<TrainingPlanResponse> getTrainingPlans(AppUser appUser) {
+        List<TrainingPlan> trainingPlans  = trainingPlanRepository.findByUserId(appUser.getId());
         if (trainingPlans.isEmpty()) {
-            throw new TrainingPlanNotFoundException("Training Plans with userId " + userId + " not found");
+            throw new TrainingPlanNotFoundException("Training Plans with userId " + appUser.getId() + " not found");
         }
 
         return trainingPlans.stream().map(plan ->
