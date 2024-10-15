@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -61,4 +63,41 @@ public class TrainingSessionServiceImpl implements TrainingSessionService {
                 trainingSession.getStatus()
         );
     }
+
+    @Override
+    public List<TrainingSessionResponse> getTrainingSessions(AppUser appUser, Long workoutId) {
+        List<TrainingSession> trainingSessions = trainingSessionRepository.findByUserIdAndWorkoutId(appUser.getId(), workoutId);
+
+        if (trainingSessions.isEmpty()) {
+            throw new TrainingSessionNotFoundException("Training session with userId: " + appUser.getId() +
+                    " and workoutId: " + workoutId + " not found.");
+        }
+
+        return trainingSessions.stream().map(trainingSession ->
+                new TrainingSessionResponse(
+                        trainingSession.getId(),
+                        trainingSession.getSessionDate(),
+                        trainingSession.getWorkout().getId(),
+                        trainingSession.getStatus()
+                )).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<TrainingSessionResponse> getTrainingSession(AppUser appUser, Status status, Long workoutId) {
+        List<TrainingSession> trainingSessions = trainingSessionRepository.findByUserIdAndStatusAndWorkoutId(appUser.getId(), status, workoutId);
+
+        if (trainingSessions.isEmpty()) {
+            throw new TrainingSessionNotFoundException("Training session with userId: " + appUser.getId() +
+                    " and status: " + status + " and workoutId: " + workoutId + " not found.");
+        }
+
+        return trainingSessions.stream().map(trainingSession ->
+                new TrainingSessionResponse(
+                        trainingSession.getId(),
+                        trainingSession.getSessionDate(),
+                        trainingSession.getWorkout().getId(),
+                        trainingSession.getStatus()
+                )).collect(Collectors.toList());
+    }
+
 }
