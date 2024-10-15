@@ -1,7 +1,7 @@
 package com.aifitness.fitnessapp.training.workout.model;
 
 import com.aifitness.fitnessapp.training.exercise.model.Exercise;
-import com.aifitness.fitnessapp.training.trainingPlanVersion.model.TrainingPlanVersion;
+import com.aifitness.fitnessapp.training.trainingplan.trainingPlanVersion.model.TrainingPlanVersion;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

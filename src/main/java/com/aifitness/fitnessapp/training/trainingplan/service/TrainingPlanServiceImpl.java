@@ -2,7 +2,7 @@ package com.aifitness.fitnessapp.training.trainingplan.service;
 
 import com.aifitness.fitnessapp.exceptions.TrainingPlanNotFoundException;
 import com.aifitness.fitnessapp.exceptions.UserNotFoundException;
-import com.aifitness.fitnessapp.training.trainingPlanVersion.service.TrainingPlanVersionService;
+import com.aifitness.fitnessapp.training.trainingplan.trainingPlanVersion.service.TrainingPlanVersionService;
 import com.aifitness.fitnessapp.training.trainingplan.dto.TrainingPlanResponse;
 import com.aifitness.fitnessapp.training.trainingplan.model.TrainingPlan;
 import com.aifitness.fitnessapp.training.trainingplan.reposiotry.TrainingPlanRepository;
