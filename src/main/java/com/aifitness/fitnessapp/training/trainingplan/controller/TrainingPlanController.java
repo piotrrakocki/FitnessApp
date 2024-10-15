@@ -1,6 +1,5 @@
 package com.aifitness.fitnessapp.training.trainingplan.controller;
 
-import com.aifitness.fitnessapp.training.trainingplan.dto.CreateTrainingPlanRequest;
 import com.aifitness.fitnessapp.training.trainingplan.dto.TrainingPlanResponse;
 import com.aifitness.fitnessapp.training.trainingplan.service.TrainingPlanService;
 import com.aifitness.fitnessapp.user.model.AppUser;
@@ -19,8 +18,8 @@ public class TrainingPlanController {
     private final TrainingPlanService trainingPlanService;
 
     @PostMapping("/create")
-    public ResponseEntity<TrainingPlanResponse> createTrainingPlan(@RequestBody CreateTrainingPlanRequest request) {
-            return ResponseEntity.ok(trainingPlanService.createTrainingPlan(request.userId(), request.planName()));
+    public ResponseEntity<TrainingPlanResponse> createTrainingPlan(@AuthenticationPrincipal AppUser appUser, @RequestBody String planName) {
+            return ResponseEntity.ok(trainingPlanService.createTrainingPlan(appUser, planName));
     }
 
     @GetMapping("/get")

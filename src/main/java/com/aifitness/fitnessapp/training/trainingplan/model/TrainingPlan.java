@@ -34,4 +34,10 @@ public class TrainingPlan {
 
     @OneToMany(mappedBy = "trainingPlan", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<TrainingPlanVersion> versions;
+
+    public TrainingPlan(String name, AppUser user, LocalDateTime createdAt) {
+        this.name = name;
+        this.user = user;
+        this.createdAt = createdAt;
+    }
 }

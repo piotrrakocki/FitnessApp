@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TrainingPlanService {
 
-    TrainingPlanResponse createTrainingPlan(Long userId, String planName);
+    TrainingPlanResponse createTrainingPlan(AppUser appUser, String planName);
 
     List<TrainingPlanResponse> getTrainingPlans(AppUser appUser);
 
