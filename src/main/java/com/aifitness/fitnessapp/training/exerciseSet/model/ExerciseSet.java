@@ -27,6 +27,9 @@ public class ExerciseSet {
     @Column(length = 500)
     private String notes;
 
+    public ExerciseSet() {
+    }
+
     public ExerciseSet(ExerciseSession exerciseSession, double weightUsed, int repsCompleted, String notes) {
         this.exerciseSession = exerciseSession;
         this.weightUsed = weightUsed;

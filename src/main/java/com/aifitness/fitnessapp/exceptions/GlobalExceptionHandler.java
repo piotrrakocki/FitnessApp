@@ -125,4 +125,14 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(exceptionResponse, notFound);
     }
 
+    @ExceptionHandler(value = {ExerciseSetNotFoundException.class})
+    public ResponseEntity<Object> handleExerciseSetNotFoundException(ExerciseSetNotFoundException e) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+                e.getMessage(),
+                notFound,
+                ZonedDateTime.now(ZoneId.of("Z"))
+        );
+        return new ResponseEntity<>(exceptionResponse, notFound);
+    }
+
 }
