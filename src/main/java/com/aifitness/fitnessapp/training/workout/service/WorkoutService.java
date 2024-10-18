@@ -10,5 +10,7 @@ public interface WorkoutService {
 
     WorkoutResponse addWorkoutToTrainingPlan(Long trainingPlanId, Workout workout);
 
+    WorkoutResponse editWorkout(Long workoutId, String name, String description);
+
     List<WorkoutDetailsResponse> getWorkoutsByTrainingPlanId(Long userId);
 }

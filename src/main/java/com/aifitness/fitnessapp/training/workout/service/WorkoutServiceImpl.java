@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,6 +35,34 @@ public class WorkoutServiceImpl  implements WorkoutService {
                 workout.getId(),
                 workout.getName(),
                 workout.getDescription()
+        );
+    }
+
+    @Override
+    public WorkoutResponse editWorkout(Long workoutId, String name, String description) {
+        Workout workout = workoutRepository.findById(workoutId)
+                .orElseThrow(() -> new WorkoutNotFoundException("Workout with workoutId: " + workoutId + " not found."));
+
+        boolean hasChange = false;
+
+        if (!Objects.equals(workout.getName(), name)) {
+            hasChange = true;
+            workout.setName(name);
+        }
+
+        if (!Objects.equals(workout.getDescription(), description)) {
+            hasChange = true;
+            workout.setDescription(description);
+        }
+
+        if (hasChange) {
+            workoutRepository.save(workout);
+        }
+
+        return new WorkoutResponse(
+                workoutId,
+                name,
+                description
         );
     }
 
