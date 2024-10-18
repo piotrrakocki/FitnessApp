@@ -11,7 +11,6 @@ import com.aifitness.fitnessapp.training.trainingplan.trainingPlanVersion.model.
 import com.aifitness.fitnessapp.training.trainingplan.trainingPlanVersion.service.TrainingPlanVersionService;
 import com.aifitness.fitnessapp.training.workout.model.Workout;
 import com.aifitness.fitnessapp.training.workout.repository.WorkoutRepository;
-import com.aifitness.fitnessapp.training.workout.service.WorkoutService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +24,6 @@ public class ExerciseServiceImpl implements ExerciseService {
 
     private final ExerciseRepository exerciseRepository;
     private final WorkoutRepository workoutRepository;
-    private final WorkoutService workoutService;
     private final TrainingSessionService trainingSessionService;
     private final TrainingPlanVersionService trainingPlanVersionService;
 
