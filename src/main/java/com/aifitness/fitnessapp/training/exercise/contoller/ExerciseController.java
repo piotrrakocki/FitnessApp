@@ -18,4 +18,14 @@ public class ExerciseController {
     public ResponseEntity<ExerciseResponse> addExercise(@PathVariable Long workoutId, @RequestBody ExerciseRequest exerciseRequest) {
         return ResponseEntity.ok(exerciseService.addExercise(workoutId, exerciseRequest));
     }
+
+    @PutMapping("/{exerciseId}")
+    public ResponseEntity<ExerciseResponse> updatedExercise(@PathVariable Long exerciseId, @RequestBody ExerciseRequest exerciseRequest) {
+        return ResponseEntity.ok(exerciseService.editExercise(
+                exerciseId,
+                exerciseRequest.name(),
+                exerciseRequest.sets(),
+                exerciseRequest.minReps(),
+                exerciseRequest.maxReps()));
+    }
 }
