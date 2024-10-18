@@ -14,4 +14,6 @@ public interface TrainingSessionRepository extends JpaRepository<TrainingSession
 
     List<TrainingSession> findByUserIdAndStatusAndWorkoutId(Long userId, Status status, Long workoutId);
 
+    boolean existsByWorkoutId(Long workoutId);
+
 }

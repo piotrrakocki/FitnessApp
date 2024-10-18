@@ -15,4 +15,6 @@ public interface TrainingSessionService {
     List<TrainingSessionResponse> getTrainingSessions(AppUser appUser, Long workoutId);
 
     List<TrainingSessionResponse> getTrainingSession(AppUser appUser, Status status, Long workoutId);
+
+    boolean isTrainingSessionExist(Long workoutId);
 }

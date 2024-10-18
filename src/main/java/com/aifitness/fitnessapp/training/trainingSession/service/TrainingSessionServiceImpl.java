@@ -9,7 +9,6 @@ import com.aifitness.fitnessapp.training.trainingSession.repository.TrainingSess
 import com.aifitness.fitnessapp.training.workout.model.Workout;
 import com.aifitness.fitnessapp.training.workout.repository.WorkoutRepository;
 import com.aifitness.fitnessapp.user.model.AppUser;
-import com.aifitness.fitnessapp.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +22,6 @@ public class TrainingSessionServiceImpl implements TrainingSessionService {
 
     private final TrainingSessionRepository trainingSessionRepository;
     private final WorkoutRepository workoutRepository;
-    private final UserRepository userRepository;
 
     @Override
     public TrainingSessionResponse startTrainingSession(AppUser appUser, Long workoutId) {
@@ -98,6 +96,11 @@ public class TrainingSessionServiceImpl implements TrainingSessionService {
                         trainingSession.getWorkout().getId(),
                         trainingSession.getStatus()
                 )).collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean isTrainingSessionExist(Long workoutId) {
+        return trainingSessionRepository.existsByWorkoutId(workoutId);
     }
 
 }
