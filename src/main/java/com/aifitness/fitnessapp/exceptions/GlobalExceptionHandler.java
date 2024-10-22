@@ -13,6 +13,7 @@ public class GlobalExceptionHandler {
 
     private final HttpStatus notFound = HttpStatus.NOT_FOUND;
     private final HttpStatus conflict = HttpStatus.CONFLICT;
+    private final HttpStatus badRequest = HttpStatus.BAD_REQUEST;
 
     @ExceptionHandler(value = {EmailAlreadyTakenException.class})
     public ResponseEntity<Object> handleEmailAlreadyTakenException(EmailAlreadyTakenException e) {
@@ -133,6 +134,16 @@ public class GlobalExceptionHandler {
                 ZonedDateTime.now(ZoneId.of("Z"))
         );
         return new ResponseEntity<>(exceptionResponse, notFound);
+    }
+
+    @ExceptionHandler(value = {TrainingPlanMappingException.class})
+    public ResponseEntity<Object> handleTrainingPlanMappingException(TrainingPlanMappingException e) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+                e.getMessage(),
+                badRequest,
+                ZonedDateTime.now(ZoneId.of("Z"))
+        );
+        return new ResponseEntity<>(exceptionResponse, badRequest);
     }
 
 }
