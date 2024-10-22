@@ -22,6 +22,17 @@ public class TrainingPlanController {
             return ResponseEntity.ok(trainingPlanService.createTrainingPlan(appUser, planName));
     }
 
+    @PostMapping("/generate")
+    public ResponseEntity<String> generateTrainingPlan(
+            @AuthenticationPrincipal AppUser appUser,
+            @RequestParam String level,
+            @RequestParam String experience,
+            @RequestParam String lifestyle,
+            @RequestParam int sessionsPerWeek
+    ) {
+        return ResponseEntity.ok(trainingPlanService.generateTrainingPlan(appUser, level, experience, lifestyle, sessionsPerWeek));
+    }
+
     @GetMapping("/get")
     public ResponseEntity<List<TrainingPlanResponse>> getTrainingPlans(@AuthenticationPrincipal AppUser appUser) {
         return ResponseEntity.ok(trainingPlanService.getTrainingPlans(appUser));

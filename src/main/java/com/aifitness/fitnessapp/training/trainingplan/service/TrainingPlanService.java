@@ -14,4 +14,6 @@ public interface TrainingPlanService {
 
     TrainingPlanResponse getNewestTrainingPlan(AppUser appUser, Long trainingPlanId);
 
+    String generateTrainingPlan(AppUser appUser, String level, String experience, String lifestyle, int sessionPerWeek);
+
 }
